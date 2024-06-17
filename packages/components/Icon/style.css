@@ -1,0 +1,16 @@
+.bin-icon {
+  --bin-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--bin-icon-color);
+  font-size: inherit;
+}
+
+@each $val in primary, info, success, warning, danger {
+  .bin-icon--$(val) {
+    --bin-icon-color: var(--bin-color-$(val));
+  }
+}

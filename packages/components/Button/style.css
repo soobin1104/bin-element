@@ -1,0 +1,221 @@
+.bin-button-group {
+  --bin-button-group-border-color: var(--bin-border-color-lighter);
+}
+
+.bin-button {
+  --bin-button-font-weight: var(--bin-font-weight-primary);
+  --bin-button-border-color: var(--bin-border-color);
+  --bin-button-bg-color: var(--bin-fill-color-blank);
+  --bin-button-text-color: var(--bin-text-color-regular);
+  --bin-button-disabled-text-color: var(--bin-disabled-text-color);
+  --bin-button-disabled-bg-color: var(--bin-fill-color-blank);
+  --bin-button-disabled-border-color: var(--bin-border-color-light);
+  --bin-button-hover-text-color: var(--bin-color-primary);
+  --bin-button-hover-bg-color: var(--bin-color-primary-light-9);
+  --bin-button-hover-border-color: var(--bin-color-primary-light-7);
+  --bin-button-active-text-color: var(--bin-button-hover-text-color);
+  --bin-button-active-border-color: var(--bin-color-primary);
+  --bin-button-active-bg-color: var(--bin-button-hover-bg-color);
+  --bin-button-outline-color: var(--bin-color-primary-light-5);
+  --bin-button-active-color: var(--bin-text-color-primary);
+}
+
+.bin-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--bin-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--bin-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--bin-button-bg-color);
+  border: var(--bin-border);
+  border-color: var(--bin-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--bin-font-size-base);
+  border-radius: var(--bin-border-radius-base);
+
+  & + & {
+    margin-left: 12px;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--bin-button-hover-text-color);
+    border-color: var(--bin-button-hover-border-color);
+    background-color: var(--bin-button-hover-bg-color);
+    outline: none;
+  }
+
+  &:active {
+    color: var(--bin-button-active-text-color);
+    border-color: var(--bin-button-active-border-color);
+    background-color: var(--bin-button-active-bg-color);
+    outline: none;
+  }
+
+  /*plain*/
+  &.is-plain {
+    --bin-button-hover-text-color: var(--bin-color-primary);
+    --bin-button-hover-bg-color: var(--bin-fill-color-blank);
+    --bin-button-hover-border-color: var(--bin-color-primary);
+  }
+
+  /*round*/
+  &.is-round {
+    border-radius: var(--bin-border-radius-round);
+  }
+
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+
+  /*disabled*/
+  &.is-loading,
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--bin-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--bin-button-disabled-bg-color);
+    border-color: var(--bin-button-disabled-border-color);
+  }
+
+  [class*='er-icon'] {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@each $val in primary, success, warning, info, danger {
+  .bin-button--$(val) {
+    --bin-button-text-color: var(--bin-color-white);
+    --bin-button-bg-color: var(--bin-color-$(val));
+    --bin-button-border-color: var(--bin-color-$(val));
+    --bin-button-outline-color: var(--bin-color-$(val)-light-5);
+    --bin-button-active-color: var(--bin-color-$(val)-dark-2);
+    --bin-button-hover-text-color: var(--bin-color-white);
+    --bin-button-hover-bg-color: var(--bin-color-$(val)-light-3);
+    --bin-button-hover-border-color: var(--bin-color-$(val)-light-3);
+    --bin-button-active-bg-color: var(--bin-color-$(val)-dark-2);
+    --bin-button-active-border-color: var(--bin-color-$(val)-dark-2);
+    --bin-button-disabled-text-color: var(--bin-color-white);
+    --bin-button-disabled-bg-color: var(--bin-color-$(val)-light-5);
+    --bin-button-disabled-border-color: var(--bin-color-$(val)-light-5);
+  }
+
+  .bin-button--$(val).is-plain {
+    --bin-button-text-color: var(--bin-color-$(val));
+    --bin-button-bg-color: var(--bin-color-$(val)-light-9);
+    --bin-button-border-color: var(--bin-color-$(val)-light-5);
+    --bin-button-hover-text-color: var(--bin-color-white);
+    --bin-button-hover-bg-color: var(--bin-color-$(val));
+    --bin-button-hover-border-color: var(--bin-color-$(val));
+    --bin-button-active-text-color: var(--bin-color-white);
+
+    --bin-button-disabled-text-color: var(--bin-color-$(val)-light-5);
+    --bin-button-disabled-bg-color: var(--bin-color-$(val)-light-9);
+    --bin-button-disabled-border-color: var(--bin-color-$(val)-light-8);
+  }
+}
+
+.bin-button--large {
+  --bin-button-size: 40px;
+  height: var(--bin-button-size);
+  padding: 12px 19px;
+  font-size: var(--bin-font-size-base);
+  border-radius: var(--bin-border-radius-base);
+
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+  }
+}
+
+.bin-button--small {
+  --bin-button-size: 24px;
+  height: var(--bin-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--bin-border-radius-base) - 1px);
+
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+  [class*='er-icon'] {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.bin-button-group {
+  display: inline-block;
+  vertical-align: middle;
+
+  &::after {
+    clear: both;
+  }
+
+  & > :deep(.bin-button) {
+    float: left;
+    position: relative;
+    margin-left: 0;
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right-color: var(--bin-button-group-border-color);
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-color: var(--bin-button-group-border-color);
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+
+      border-left-color: var(--bin-button-group-border-color);
+      border-right-color: var(--bin-button-group-border-color);
+    }
+
+    &:not(:last-child) {
+      margin-right: -1px;
+    }
+
+    &:first-child:last-child {
+      border-top-right-radius: var(--bin-border-radius-base);
+      border-bottom-right-radius: var(--bin-border-radius-base);
+      border-top-left-radius: var(--bin-border-radius-base);
+      border-bottom-left-radius: var(--bin-border-radius-base);
+
+      &.is-round {
+        border-radius: var(--bin-border-radius-round);
+      }
+
+      &.is-circle {
+        border-radius: 50%;
+      }
+    }
+  }
+}
